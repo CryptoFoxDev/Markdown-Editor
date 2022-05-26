@@ -2,15 +2,17 @@ $(document).ready(function () {
   new WMD("input", "toolbar", { preview: "preview" });
   //Load template content
   getREADME();
-});
 
-document.querySelector("#save").addEventListener("click", function () {
-  let data = document.getElementById("input").value;
-
-  const { ipcRenderer } = require("electron");
-
-  // send editor content to main.js
-  ipcRenderer.send("save", data);
+  $(".wmd-input").bind('keydown', function(e){
+    var TABKEY = 9;
+    if(e.keyCode == TABKEY) {
+        this.value += "    ";
+        if(e.preventDefault) {
+            e.preventDefault();
+        }
+        return false;
+    }
+}); 
 });
 
 function getREADME() {
@@ -36,6 +38,26 @@ function addToInput(data) {
   editor.value = editor.value + "\n" + data + "\n";
 }
 
+function copyAll() {
+  let data = document.getElementById("input").value;
+  navigator.clipboard.writeText(data);
+  new Notification('Success', { body: 'Copied content to clipboard' });
+}
+
+document.querySelector("#save").addEventListener("click", function () {
+  let data = document.getElementById("input").value;
+  const { ipcRenderer } = require("electron");
+  ipcRenderer.send("save", data);
+});
+
+document.querySelector("#delete").addEventListener("click", function () {
+  document.getElementById("input").value = "";
+});
+
+document.querySelector("#bold").addEventListener("click", function () {
+  addToInput("**Im bold**");
+});
+
 document.querySelector("#bold").addEventListener("click", function () {
   addToInput("**Im bold**");
 });
@@ -46,6 +68,10 @@ document.querySelector("#italic").addEventListener("click", function () {
 
 document.querySelector("#bold-italic").addEventListener("click", function () {
   addToInput("***Im bold and italic***");
+});
+
+document.querySelector("#strikethrough").addEventListener("click", function () {
+  addToInput("~~strikethrough~~");
 });
 
 document.querySelector("#blockquote").addEventListener("click", function () {
