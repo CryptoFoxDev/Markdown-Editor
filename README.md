@@ -23,6 +23,7 @@ Lightmode
 ## Built With
 
 * [ElectronJS](https://www.electronjs.org/)
+* [electron-builder](https://www.electron.build/)
 
 ## Contributing
 
