@@ -1,6 +1,8 @@
 # Markdown Editor
 
-This is a simple makrdown editor with a few clean interface
+Easy to user Markdown editor with a lot of neat functions and a minimal UI
+
+![Welcome Window](https://raw.githubusercontent.com/CryptoFoxDev/MarkdownEditor/master/assets/img/preview/welcome-screen.png)
 
 ### Features
 
@@ -21,6 +23,7 @@ Lightmode
 ## Built With
 
 * [ElectronJS](https://www.electronjs.org/)
+* [electron-builder](https://www.electron.build/)
 
 ## Contributing
 
