@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <link href="./styles.css" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="./assets/wmd/wmd.css" />
+  <link type="text/css" rel="stylesheet" href="./assets/css/style.css" />
+  <title>Markdown-Editor by CryptoFox.dev</title>
+</head>
+
+<body>
+
+  <div class="split left">
+    <div class="centered">
+
+      <div id="editor">
+        <textarea id="input" class="wmd-input" rows="30" cols="80"></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="split right">
+    <div class="centered">
+
+
+      <div id="preview" class="wmd-preview">
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer">
+    <button id="bold" class="toolbutton"><img src="./assets/img/icons/format-bold.svg" alt="bold" /></button>
+    <button id="italic" class="toolbutton"><img src="./assets/img/icons/format-italic.svg" alt="italic" /></button>
+    <button id="bold-italic" class="toolbutton"><img src="./assets/img/icons/bold-italic.svg"
+        alt="bold&italic" /></button>
+    <button id="blockquote" class="toolbutton"><img src="./assets/img/icons/format-quote-close.svg"
+        alt="blockquote" /></button>
+    <button id="ol" class="toolbutton"><img src="./assets/img/icons/format-list-numbered.svg"
+        alt="ordered list" /></button>
+    <button id="ul" class="toolbutton"><img src="./assets/img/icons/format-list-bulleted.svg"
+        alt="unordered lst" /></button>
+    <button id="code" class="toolbutton"><img src="./assets/img/icons/code-tags.svg" alt="code" /></button>
+    <button id="hr" class="toolbutton"><img src="./assets/img/icons/minus.svg" alt="horizontal line" /></button>
+
+    <button id="image" class="toolbutton"><img src="./assets/img/icons/image.svg" alt="image" /></button>
+    <button id="url" class="toolbutton"><img src="./assets/img/icons/link-variant.svg" alt="url" /></button>
+
+    <button id="h1" class="toolbutton"><img src="./assets/img/icons/format-header-1.svg" alt="heading 1" /></button>
+    <button id="h2" class="toolbutton"><img src="./assets/img/icons/format-header-2.svg" alt="heading 2" /></button>
+    <button id="h3" class="toolbutton"><img src="./assets/img/icons/format-header-3.svg" alt="heading 3" /></button>
+    <button id="h4" class="toolbutton"><img src="./assets/img/icons/format-header-4.svg" alt="heading 4" /></button>
+    <button id="h5" class="toolbutton"><img src="./assets/img/icons/format-header-5.svg" alt="heading 5" /></button>
+    <button id="h6" class="toolbutton"><img src="./assets/img/icons/format-header-6.svg" alt="heading 6" /></button>
+
+    <div class="right">
+      <button id="copyall" class="toolbutton" onclick="copyAll();"><img src="./assets/img/icons/content-copy.svg"
+          alt="copy to clipboard" /></button>
+      <button id="save" class="toolbutton"><img src="./assets/img/icons/content-save-outline.svg" alt="save" /></button>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+  <!-- WMD -->
+  <script type="text/javascript" src="./assets/wmd/showdown.js"></script>
+  <script type="text/javascript" src="./assets/wmd/wmd.js"></script>
+
+  <!-- Additional scripts -->
+  <script type="text/javascript" src="./assets/js/functions.js"></script>
+
+  <script src="./renderer.js"></script>
+</body>
+
+</html>
