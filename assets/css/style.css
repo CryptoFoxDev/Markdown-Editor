@@ -114,7 +114,9 @@ blockquote {
 #preview a:hover {
   text-decoration: underline;
 }
-
+#preview img {
+  max-width: 750px;
+}
 #preview blockquote {
   margin-left: 5px;
   padding: 1px;
