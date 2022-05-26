@@ -10,6 +10,14 @@ This is a simple makrdown editor with a few clean interface
  - File import [SOON]
  - Automatic lightmode/darkmode
 
+## Preview
+
+Darkmode
+![Darkmode](https://raw.githubusercontent.com/CryptoFoxDev/MarkdownEditor/master/assets/img/preview/dark.png)
+
+Lightmode
+![Lightmode](https://raw.githubusercontent.com/CryptoFoxDev/MarkdownEditor/master/assets/img/preview/light.png)
+
 ## Built With
 
 * [ElectronJS](https://www.electronjs.org/)
