@@ -104,6 +104,7 @@ function openEditor() {
 }
 
 function saveFile(content) {
+  const credits = '\n\n---\nCreated with [Markdown Editor](https://github.com/CryptoFoxDev/MarkdownEditor)';
   const { dialog } = require("electron");
   var fs = require("fs");
   var options = {
@@ -119,7 +120,7 @@ function saveFile(content) {
 
   dialog.showSaveDialog(null, options).then(({ filePath }) => {
     try {
-      fs.writeFileSync(filePath, content, "utf-8");
+      fs.writeFileSync(filePath, content+credits, "utf-8");
       new Notification({
         title: "File saved successfully",
         body: filePath,
