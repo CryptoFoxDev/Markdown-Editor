@@ -1,7 +1,10 @@
+const { ipcRenderer } = require("electron");
+
 $(document).ready(function () {
+  if(document.getElementById("input").value != 'undefined'){
+    getREADME();
+  }
   new WMD("input", "toolbar", { preview: "preview" });
-  //Load template content
-  getREADME();
 
   $(".wmd-input").bind('keydown', function(e){
     var TABKEY = 9;
@@ -46,8 +49,11 @@ function copyAll() {
 
 document.querySelector("#save").addEventListener("click", function () {
   let data = document.getElementById("input").value;
-  const { ipcRenderer } = require("electron");
   ipcRenderer.send("save", data);
+});
+
+document.querySelector("#home").addEventListener("click", function () {
+  ipcRenderer.send("home");
 });
 
 document.querySelector("#delete").addEventListener("click", function () {
@@ -88,6 +94,14 @@ document.querySelector("#ul").addEventListener("click", function () {
 
 document.querySelector("#code").addEventListener("click", function () {
   addToInput("```\nIm a codeblock\n```");
+});
+
+document.querySelector("#image").addEventListener("click", function () {
+  addToInput('![Alt text](https://path-to-your.image "a title")');
+});
+
+document.querySelector("#url").addEventListener("click", function () {
+  addToInput("[Text](http://your-site.com)");
 });
 
 document.querySelector("#hr").addEventListener("click", function () {

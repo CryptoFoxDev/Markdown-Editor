@@ -4,19 +4,28 @@
   "description": "A simple markdown editor with a lot of neat functions",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": "https://github.com/CryptoFoxDev/MarkdownEditor",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
+  "keywords": [],
   "author": "CryptoFox.dev",
   "license": "CC4.0-BY-NC-SA",
   "devDependencies": {
-    "electron": "^19.0.0"
+    "electron": "^19.0.0",
+    "electron-builder": "^23.0.3"
+  },
+  "build": {
+    "appId": "cryptofox.dev.markdowneditor",
+    "productName": "Markdown Editor",
+    "copyright": "Copyright © 2022 ${author}",
+    "mac": {
+      "category": "your.app.category.type",
+      "icon": "./build/icon.icns"
+    },
+    "win": {
+      "icon": "./build/icon.ico"
+    }
   }
 }

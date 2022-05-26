@@ -1,10 +1,14 @@
 const { app, BrowserWindow, ipcMain, Notification, Menu } = require("electron");
 const path = require("path");
 
+let editorData;
+module.exports.getEditorData = () => editorData;
+
 function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: path.join(__dirname, 'build/icon.png'),
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
@@ -12,7 +16,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadFile("index.html");
+  mainWindow.loadFile("welcome.html");
   //mainWindow.webContents.openDevTools()
 }
 
@@ -81,6 +85,23 @@ Menu.setApplicationMenu(menu);
 ipcMain.on("save", (event, arg) => {
   saveFile(arg);
 });
+
+ipcMain.on("openEditor", (event, arg) => {
+  editorData = arg
+  openEditor()
+});
+
+ipcMain.on("openFile", (event, arg) => {
+  console.log("Will be implemented soon");
+});
+
+ipcMain.on("home", (event, arg) => {
+  BrowserWindow.getAllWindows()[0].loadFile("welcome.html");
+});
+
+function openEditor() {
+  BrowserWindow.getAllWindows()[0].loadFile("editor.html");
+}
 
 function saveFile(content) {
   const { dialog } = require("electron");

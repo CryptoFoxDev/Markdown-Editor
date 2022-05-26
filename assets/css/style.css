@@ -9,6 +9,18 @@ body {
   color: #333;
 }
 
+.url {
+  color: #333;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 25px;
+}
+
+.center {
+  text-align: center;
+}
 /* LEFT SIDE: EDITOR */
 
 textarea {
@@ -34,6 +46,23 @@ textarea {
 .toolbutton img {
   width: 24px;
   height: 24px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.btn {
+  width: 100%;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #999;
+  border-radius: 8px;
+  background-color: #eee;
+}
+
+.btn:hover {
+  cursor: pointer;
 }
 
 /* RIGHT SIDE: PREVIEW */
@@ -164,13 +193,16 @@ pre {
   z-index: 9999;
   bottom: 0px;
   padding: 10px;
-  border-top: 1px solid #999;
   font-size: 0.9em;
   color: #aaa;
 }
 
 #footer a {
   color: #aaa;
+}
+
+.border-top {
+  border-top: 1px solid #999;
 }
 
 .seperator {
@@ -189,6 +221,10 @@ pre {
     color: #fff;
   }
 
+  .url {
+    color: #fff;
+  }
+
   textarea {
     border: 1px solid #999;
     color: #fff;
@@ -198,6 +234,11 @@ pre {
   .toolbutton {
     background-color: #333;
     color: #fff;
+  }
+
+  .btn{
+    background-color: #333;
+    color: #fff
   }
 
   #preview {
@@ -231,6 +272,11 @@ pre {
 
   #footer img {
     /* Change svg color to white */
+    filter: invert(100%) sepia(83%) saturate(1%) hue-rotate(324deg)
+      brightness(103%) contrast(101%);
+  }
+
+  .icon {
     filter: invert(100%) sepia(83%) saturate(1%) hue-rotate(324deg)
       brightness(103%) contrast(101%);
   }
