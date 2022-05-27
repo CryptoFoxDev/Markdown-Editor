@@ -1,6 +1,6 @@
 # Markdown Editor
 
-Easy to user Markdown editor with a lot of neat functions and a minimal UI
+Easy to use Markdown editor with a lot of neat functions and a minimal UI
 
 ![Welcome Window](https://raw.githubusercontent.com/CryptoFoxDev/MarkdownEditor/master/assets/img/preview/welcome-screen.png)
 
