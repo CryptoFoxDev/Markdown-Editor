@@ -1,14 +1,21 @@
-const { app, BrowserWindow, ipcMain, Notification, Menu } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  ipcMain,
+  Notification,
+  Menu,
+  dialog,
+} = require("electron");
 const path = require("path");
+var fs = require("fs");
 
-let editorData;
-module.exports.getEditorData = () => editorData;
+let editorData
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: path.join(__dirname, 'build/icon.png'),
+    icon: path.join(__dirname, "build/icon.png"),
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
@@ -23,7 +30,6 @@ function createWindow() {
 //Custom Menu
 const isMac = process.platform === "darwin";
 const template = [
-  // { role: 'appMenu' }
   ...(isMac
     ? [
         {
@@ -51,7 +57,6 @@ const template = [
       },
     ],
   },
-  // { role: 'editMenu' }
   {
     label: "Edit",
     submenu: [
@@ -66,7 +71,6 @@ const template = [
         : [{ role: "delete" }, { type: "separator" }, { role: "selectAll" }]),
     ],
   },
-  // { role: 'viewMenu' }
   {
     label: "View",
     submenu: [
@@ -87,12 +91,15 @@ ipcMain.on("save", (event, arg) => {
 });
 
 ipcMain.on("openEditor", (event, arg) => {
-  editorData = arg
-  openEditor()
+  openEditor(arg);
 });
 
 ipcMain.on("openFile", (event, arg) => {
-  console.log("Will be implemented soon");
+  openFile();
+});
+
+ipcMain.on('getEditorData', function (event, arg) {
+  event.reply('editorData',editorData);
 });
 
 ipcMain.on("home", (event, arg) => {
@@ -104,9 +111,7 @@ function openEditor() {
 }
 
 function saveFile(content) {
-  const credits = '\n\n---\nCreated with [Markdown Editor](https://github.com/CryptoFoxDev/MarkdownEditor)';
-  const { dialog } = require("electron");
-  var fs = require("fs");
+  const credits = "\n\n---\nCreated with [Markdown Editor](https://github.com/CryptoFoxDev/MarkdownEditor)";
   var options = {
     message: "Select where you want to save your file",
     buttonLabel: "Save",
@@ -120,7 +125,7 @@ function saveFile(content) {
 
   dialog.showSaveDialog(null, options).then(({ filePath }) => {
     try {
-      fs.writeFileSync(filePath, content+credits, "utf-8");
+      fs.writeFileSync(filePath, content + credits, "utf-8");
       new Notification({
         title: "File saved successfully",
         body: filePath,
@@ -131,7 +136,32 @@ function saveFile(content) {
   });
 }
 
-function openFile() {}
+function openFile() {
+  const options = {
+    title: "Open Markdown file",
+    //defaultPath: '/path/to/something/',
+    buttonLabel: "Open",
+    filters: [{ name: "Markdown", extensions: ["md"] }],
+    message: "Select the file you want to open",
+  };
+
+  dialog
+    .showOpenDialog(null, options)
+    .then((result) => {
+      fs.readFile(result.filePaths[0], "utf-8", (err, data) => {
+        if (err) {
+          console.log(err.message);
+          return;
+        }
+
+        editorData = data;
+        openEditor();
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 app.whenReady().then(() => {
   createWindow();

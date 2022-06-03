@@ -1,21 +1,28 @@
 const { ipcRenderer } = require("electron");
 
-$(document).ready(function () {
-  if(document.getElementById("input").value != 'undefined'){
+ipcRenderer.on("editorData", function (event, args) {
+  if (!args) {
     getREADME();
+  }else{
+    document.getElementById("input").value = args;
   }
+});
+
+$(document).ready(function () {
+  ipcRenderer.send("getEditorData");
+
   new WMD("input", "toolbar", { preview: "preview" });
 
-  $(".wmd-input").bind('keydown', function(e){
+  $(".wmd-input").bind("keydown", function (e) {
     var TABKEY = 9;
-    if(e.keyCode == TABKEY) {
-        this.value += "    ";
-        if(e.preventDefault) {
-            e.preventDefault();
-        }
-        return false;
+    if (e.keyCode == TABKEY) {
+      this.value += "    ";
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      return false;
     }
-}); 
+  });
 });
 
 function getREADME() {
@@ -44,7 +51,7 @@ function addToInput(data) {
 function copyAll() {
   let data = document.getElementById("input").value;
   navigator.clipboard.writeText(data);
-  new Notification('Success', { body: 'Copied content to clipboard' });
+  /*new Notification("Success", { body: "Copied content to clipboard" });*/
 }
 
 document.querySelector("#save").addEventListener("click", function () {

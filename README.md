@@ -6,11 +6,10 @@ Easy to use Markdown editor with a lot of neat functions and a minimal UI
 
 ### Features
 
- - Push Notifications
  - Live preview
- - File export
- - File import [SOON]
+ - File import/export
  - Automatic lightmode/darkmode
+ - Push Notifications
 
 ## Preview
 
@@ -34,7 +33,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 * *Initial work* - [CryptoFox.dev](https://github.com/cryptofoxdev)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/CryptoFoxDev/Markdown-Editor/contributors) who participated in this project.
 
 ## License
 
