@@ -31,9 +31,9 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Authors
 
-* *Initial work* - [CryptoFox.dev](https://github.com/cryptofoxdev)
+* *Initial work* - [Mario Greiner](https://github.com/mario-greiner)
 
-See also the list of [contributors](https://github.com/CryptoFoxDev/Markdown-Editor/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/mario-greiner/Markdown-Editor/contributors) who participated in this project.
 
 ## License
 
