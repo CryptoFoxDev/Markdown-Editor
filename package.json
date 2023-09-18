@@ -18,7 +18,7 @@
   "author": "CryptoFox.dev",
   "license": "CC4.0-BY-NC-SA",
   "devDependencies": {
-    "electron": "^22.3.21",
+    "electron": "^22.3.24",
     "electron-builder": "^23.0.3"
   },
   "build": {
